@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "name": "Max Mustermann",
+    "phone": "+491754202854",
+    "email": "info@weinschenck-garten.de",
+    "city": "Horgenzell",
+    "zip": "88263",
+    "project_type": "Gartengestaltung",
+    "project_size": "über 100 m²",
+    "budget": "über 50.000 €",
+    "timing": "sofort",
+    "description": "Bitte schön!",
+    "customer_class": "A",
+    "photos": [],
+    "status": "neu",
+    "created_at": "2026-03-12T20:34:35.968Z"
+  },
+  {
+    "id": 2,
+    "name": "Kai Joachim Weinschenck",
+    "phone": "+497504971950",
+    "email": "weinschenck-kai@t-online.de",
+    "city": "Horgenzell",
+    "zip": "88263",
+    "project_type": "Gartengestaltung",
+    "project_size": "über 100 m²",
+    "budget": "5.000 – 15.000 €",
+    "timing": "sofort",
+    "description": "Sanierungsarbeiten Pool",
+    "customer_class": "B",
+    "photos": [],
+    "status": "neu",
+    "created_at": "2026-03-13T17:28:54.411Z"
+  },
+  {
+    "id": 3,
+    "name": "Kai Joachim Weinschenck",
+    "phone": "+497504971950",
+    "email": "weinschenck-kai@t-online.de",
+    "city": "Horgenzell",
+    "zip": "88263",
+    "project_type": "Gartengestaltung",
+    "project_size": "über 100 m²",
+    "budget": "5.000 – 15.000 €",
+    "timing": "sofort",
+    "description": "test",
+    "customer_class": "B",
+    "photos": [],
+    "status": "neu",
+    "created_at": "2026-03-13T17:31:36.117Z"
+  }
+]
