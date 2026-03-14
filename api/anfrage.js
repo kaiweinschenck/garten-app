@@ -1,22 +1,34 @@
 const { Resend } = require('resend');
 const formidable = require('formidable');
 
+// Verhindert, dass Vercel den Request-Body vorab parst (wichtig für multipart/form-data)
+module.exports.config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function parseForm(req) {
   return new Promise((resolve, reject) => {
-    const form = formidable({ multiples: true });
+    const form = formidable({ multiples: true, maxFileSize: 10 * 1024 * 1024 });
     form.parse(req, (err, fields) => {
-      if (err) reject(err);
-      else resolve(fields);
+      if (err) {
+        console.error('[formidable] Parsing-Fehler:', err);
+        return reject(err);
+      }
+      console.log('[formidable] Felder geparst:', JSON.stringify(fields));
+      resolve(fields);
     });
   });
 }
 
-function field(fields, key) {
+// formidable v3 liefert Felder als Arrays → ersten Wert nehmen
+function get(fields, key) {
   const val = fields[key];
-  if (!val) return '–';
-  return Array.isArray(val) ? val[0] : val;
+  if (val === undefined || val === null) return '–';
+  return Array.isArray(val) ? (val[0] || '–') : val;
 }
 
 module.exports = async function handler(req, res) {
@@ -27,33 +39,54 @@ module.exports = async function handler(req, res) {
   try {
     const fields = await parseForm(req);
 
-    await resend.emails.send({
+    const name         = get(fields, 'name');
+    const phone        = get(fields, 'phone');
+    const email        = get(fields, 'email');
+    const city         = get(fields, 'city');
+    const zip          = get(fields, 'zip');
+    const project_type = get(fields, 'project_type');
+    const project_size = get(fields, 'project_size');
+    const timing       = get(fields, 'timing');
+    const budget       = get(fields, 'budget');
+    const description  = get(fields, 'description');
+
+    console.log('[resend] Sende E-Mail für:', name, email);
+
+    const { data, error } = await resend.emails.send({
       from: 'Gartenanfrage <onboarding@resend.dev>',
       to: 'info@weinschenck-garten.de',
       subject: 'Neue Gartenanfrage',
       html: `
         <h2>Neue Gartenanfrage</h2>
-        <table cellpadding="6" cellspacing="0" style="border-collapse:collapse">
-          <tr><td><strong>Name</strong></td><td>${field(fields, 'name')}</td></tr>
-          <tr><td><strong>Telefon</strong></td><td>${field(fields, 'phone')}</td></tr>
-          <tr><td><strong>E-Mail</strong></td><td>${field(fields, 'email')}</td></tr>
-          <tr><td><strong>Ort</strong></td><td>${field(fields, 'city')}</td></tr>
-          <tr><td><strong>Postleitzahl</strong></td><td>${field(fields, 'zip')}</td></tr>
-          <tr><td><strong>Projektart</strong></td><td>${field(fields, 'project_type')}</td></tr>
-          <tr><td><strong>Projektgröße</strong></td><td>${field(fields, 'project_size')}</td></tr>
-          <tr><td><strong>Gewünschter Zeitpunkt</strong></td><td>${field(fields, 'timing')}</td></tr>
-          <tr><td><strong>Budget</strong></td><td>${field(fields, 'budget')}</td></tr>
-          <tr><td><strong>Beschreibung</strong></td><td>${field(fields, 'description')}</td></tr>
+        <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:sans-serif">
+          <tr><td><strong>Name</strong></td><td>${name}</td></tr>
+          <tr><td><strong>Telefon</strong></td><td>${phone}</td></tr>
+          <tr><td><strong>E-Mail</strong></td><td>${email}</td></tr>
+          <tr><td><strong>Ort</strong></td><td>${city}</td></tr>
+          <tr><td><strong>Postleitzahl</strong></td><td>${zip}</td></tr>
+          <tr><td><strong>Projektart</strong></td><td>${project_type}</td></tr>
+          <tr><td><strong>Projektgröße</strong></td><td>${project_size}</td></tr>
+          <tr><td><strong>Gewünschter Zeitpunkt</strong></td><td>${timing}</td></tr>
+          <tr><td><strong>Budget</strong></td><td>${budget}</td></tr>
+          <tr><td><strong>Beschreibung</strong></td><td>${description}</td></tr>
         </table>
       `,
     });
+
+    if (error) {
+      console.error('[resend] API-Fehler:', JSON.stringify(error));
+      return res.status(500).json({ success: false, error: 'E-Mail konnte nicht gesendet werden' });
+    }
+
+    console.log('[resend] Erfolgreich gesendet, ID:', data?.id);
 
     return res.status(200).json({
       success: true,
       message: 'Anfrage erfolgreich gesendet',
     });
+
   } catch (error) {
-    console.error('Fehler beim Senden:', error);
+    console.error('[handler] Unerwarteter Fehler:', error?.message || error);
     return res.status(500).json({
       success: false,
       error: 'Serverfehler beim Senden der E-Mail',
