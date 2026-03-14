@@ -1,13 +1,6 @@
 const { Resend } = require('resend');
 const formidable = require('formidable');
 
-// Verhindert, dass Vercel den Request-Body vorab parst (wichtig für multipart/form-data)
-module.exports.config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function parseForm(req) {
@@ -31,7 +24,7 @@ function get(fields, key) {
   return Array.isArray(val) ? (val[0] || '–') : val;
 }
 
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -75,7 +68,11 @@ module.exports = async function handler(req, res) {
 
     if (error) {
       console.error('[resend] API-Fehler:', JSON.stringify(error));
-      return res.status(500).json({ success: false, error: 'E-Mail konnte nicht gesendet werden' });
+      // Echten Resend-Fehler zurückgeben (hilft beim Debuggen)
+      return res.status(500).json({
+        success: false,
+        error: error.message || JSON.stringify(error),
+      });
     }
 
     console.log('[resend] Erfolgreich gesendet, ID:', data?.id);
@@ -85,11 +82,20 @@ module.exports = async function handler(req, res) {
       message: 'Anfrage erfolgreich gesendet',
     });
 
-  } catch (error) {
-    console.error('[handler] Unerwarteter Fehler:', error?.message || error);
+  } catch (err) {
+    console.error('[handler] Unerwarteter Fehler:', err?.message, err?.stack);
     return res.status(500).json({
       success: false,
-      error: 'Serverfehler beim Senden der E-Mail',
+      error: err?.message || 'Unbekannter Serverfehler',
     });
   }
+}
+
+// config MUSS am handler selbst hängen, BEVOR module.exports gesetzt wird
+handler.config = {
+  api: {
+    bodyParser: false,
+  },
 };
+
+module.exports = handler;
