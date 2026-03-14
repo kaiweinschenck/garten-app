@@ -48,7 +48,7 @@ export default function RequestForm() {
 
     try {
       const res = await fetch(
-        'https://garten-app-git-main-weinschenckkj-1986s-projects.vercel.app/api/requests',
+        'https://garten-app-git-main-weinschenckkj-1986s-projects.vercel.app/api/anfrage',
         { method: 'POST', body: data }
       );
       if (!res.ok) {
