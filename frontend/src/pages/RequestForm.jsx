@@ -47,7 +47,10 @@ export default function RequestForm() {
     photos.forEach(f => data.append('photos', f));
 
     try {
-      const res = await fetch('/api/anfrage', { method: 'POST', body: data });
+      const res = await fetch(
+        'https://garten-app-git-main-weinschenckkj-1986s-projects.vercel.app/api/anfrage',
+        { method: 'POST', body: data }
+      );
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.error || 'Fehler beim Senden');
