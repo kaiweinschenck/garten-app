@@ -47,7 +47,7 @@ async function handler(req, res) {
 
     const { data, error } = await resend.emails.send({
       from: 'Gartenanfrage <onboarding@resend.dev>',
-      to: 'info@weinschenck-garten.de',
+      to: 'weinschenckkj@gmail.com',
       subject: 'Neue Gartenanfrage',
       html: `
         <h2>Neue Gartenanfrage</h2>
