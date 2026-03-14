@@ -2,6 +2,7 @@
   "name": "garten-app",
   "version": "1.0.0",
   "dependencies": {
+    "formidable": "^3.5.4",
     "resend": "^3.5.0"
   }
 }
