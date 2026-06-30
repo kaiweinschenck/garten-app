@@ -1,0 +1,38 @@
+{
+  "name": "Weinschenck GreenCalc 26",
+  "short_name": "GreenCalc",
+  "description": "Kalkulation und Angebote für Galabau – direkt auf der Baustelle",
+  "start_url": "/calc",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f0",
+  "theme_color": "#4a7c28",
+  "orientation": "portrait-primary",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Rechner",
+      "url": "/calc/rechner",
+      "description": "Herstellkosten berechnen"
+    },
+    {
+      "name": "Angebot",
+      "url": "/calc/angebot",
+      "description": "Angebot erstellen"
+    }
+  ]
+}

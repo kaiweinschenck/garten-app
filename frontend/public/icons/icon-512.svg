@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#4a7c28" rx="96"/>
+  <text x="256" y="290" font-size="192" font-weight="900" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" fill="white">GC</text>
+  <text x="256" y="390" font-size="70" text-anchor="middle" font-family="Arial, sans-serif" fill="rgba(255,255,255,0.85)" letter-spacing="10">26</text>
+</svg>
