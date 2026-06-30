@@ -9,31 +9,31 @@
 
 export const PROJEKTE = [
   {
-    id: 'musterhausen-pool',
-    titel: 'Naturstein-Sitzmauer mit Pool-Umrandung',
-    ort: 'Musterhausen',
-    typ: 'Naturstein / Pool',
-    zeitraum: 'März – September 2026',
+    id: 'berg-2026-30-06',
+    titel: 'Naturstein-Anlage Berg',
+    ort: 'Berg',
+    typ: 'Naturstein / Pflaster',
+    zeitraum: 'Juni 2026',
     beschreibung:
-      'Vom Erdaushub bis zur eingewachsenen Anlage: Dieses Projekt haben wir über ein halbes Jahr lückenlos in kurzen Clips begleitet.',
+      'Vom ersten Spatenstich bis zur fertigen Anlage: Granit-Randeinfassung, Schottertragschicht und Natursteinböschung – lückenlos in kurzen Clips dokumentiert.',
     phasen: [
       {
-        titel: 'Erdaushub & Rohbau',
+        titel: 'Erdaushub & Absteckung',
         videoSrc: '',
         poster: '',
       },
       {
-        titel: 'Tragschicht & Fundament',
+        titel: 'Tragschicht & Randeinfassung',
+        videoSrc: '',
+        poster: '/videos/berg-2026-30-06/phase-tragschicht.jpg',
+      },
+      {
+        titel: 'Natursteinböschung',
         videoSrc: '',
         poster: '',
       },
       {
-        titel: 'Natursteinmauer',
-        videoSrc: '',
-        poster: '',
-      },
-      {
-        titel: 'Bepflanzung & Finish',
+        titel: 'Finish & Einwachsen',
         videoSrc: '',
         poster: '',
       },
