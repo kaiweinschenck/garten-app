@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const PROJECT_TYPES = [
   'Gartengestaltung',
@@ -162,6 +163,10 @@ export default function RequestForm() {
         <p style={{ color: '#666', marginBottom: '1.5rem' }}>
           Füllen Sie das Formular aus — ich melde mich bei Ihnen.
         </p>
+
+        <Link to="/bautagebuch" className="nav-back" style={{ marginBottom: '1.5rem' }}>
+          📹 Unser Bautagebuch ansehen
+        </Link>
 
         {error && <div className="alert-error">{error}</div>}
 
