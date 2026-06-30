@@ -290,3 +290,49 @@ textarea { min-height: 100px; resize: vertical; }
 .dsgvo-label a:hover {
   color: #2d5016;
 }
+
+/* Bautagebuch */
+.bt-clip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.bt-clip {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+
+.bt-clip video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #000;
+}
+
+.bt-clip-label {
+  padding: 0.5rem 0.75rem;
+  background: #2d5016;
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.bt-clip-empty {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.3rem;
+  background: #eef2e8;
+  color: #777;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.bt-clip-empty span { font-weight: 600; color: #555; }
+.bt-clip-empty small { font-size: 0.78rem; }

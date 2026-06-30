@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import RequestForm from './pages/RequestForm';
+import Bautagebuch from './pages/Bautagebuch';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import RequestDetail from './pages/RequestDetail';
@@ -21,6 +22,7 @@ export default function App() {
     <Routes>
       {/* Bestehende Routes */}
       <Route path="/" element={<RequestForm />} />
+      <Route path="/bautagebuch" element={<Bautagebuch />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
       <Route path="/admin/request/:id" element={<PrivateRoute><RequestDetail /></PrivateRoute>} />
