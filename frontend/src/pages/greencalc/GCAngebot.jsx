@@ -40,7 +40,7 @@ export default function GCAngebot() {
       `Datum: ${new Date().toLocaleDateString('de-DE')}`,
       '',
       ...positionen.map((p, i) => {
-        const hk = calcHerstellkosten(p.menge, p.materialpreis, p.az_min, lohn);
+        const hk = calcHerstellkosten(p.menge, p.materialpreis, p.az_min, lohn, p.maschinenkosten || 0);
         const vp = hk.total * (1 + markup / 100);
         return `${i + 1}. ${p.bezeichnung}\n   ${p.menge} ${p.einheit} × ${eur(vp / p.menge)}/Einh. = ${eur(vp)}`;
       }),
@@ -120,7 +120,7 @@ export default function GCAngebot() {
             <div className="gc-section-title">{positionen.length} Position{positionen.length !== 1 ? 'en' : ''}</div>
 
             {positionen.map(pos => {
-              const hk = calcHerstellkosten(pos.menge, pos.materialpreis, pos.az_min, lohn);
+              const hk = calcHerstellkosten(pos.menge, pos.materialpreis, pos.az_min, lohn, pos.maschinenkosten || 0);
               const vp = hk.total * (1 + markup / 100);
               return (
                 <div key={pos.id} className="gc-pos-row">

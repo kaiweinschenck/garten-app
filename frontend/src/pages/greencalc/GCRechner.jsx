@@ -12,7 +12,7 @@ export default function GCRechner() {
   const [mode, setMode] = useState('liste'); // 'liste' | 'manuell'
 
   // Manuell
-  const [manPos, setManPos] = useState({ bezeichnung: '', einheit: 'Stk', materialpreis: '0', az_min: '0' });
+  const [manPos, setManPos] = useState({ bezeichnung: '', einheit: 'Stk', materialpreis: '0', az_min: '0', maschinenkosten: '0' });
 
   const toastTimer = useRef(null);
 
@@ -25,12 +25,12 @@ export default function GCRechner() {
   const lohn = state.lohnkostensatz;
 
   const currentPos = mode === 'manuell'
-    ? { ...manPos, materialpreis: parseFloat(manPos.materialpreis) || 0, az_min: parseFloat(manPos.az_min) || 0 }
+    ? { ...manPos, materialpreis: parseFloat(manPos.materialpreis) || 0, az_min: parseFloat(manPos.az_min) || 0, maschinenkosten: parseFloat(manPos.maschinenkosten) || 0 }
     : selected;
 
   const mengeNum = parseFloat(menge) || 0;
   const ergebnis = currentPos && mengeNum > 0
-    ? calcHerstellkosten(mengeNum, currentPos.materialpreis, currentPos.az_min, lohn)
+    ? calcHerstellkosten(mengeNum, currentPos.materialpreis, currentPos.az_min, lohn, currentPos.maschinenkosten || 0)
     : null;
 
   function showToast(msg) {
@@ -55,6 +55,7 @@ export default function GCRechner() {
       menge: mengeNum,
       materialpreis: pos.materialpreis,
       az_min: pos.az_min,
+      maschinenkosten: pos.maschinenkosten || 0,
       lohnkostensatz: lohn,
     });
     showToast(`"${pos.bezeichnung}" zum Angebot hinzugefügt`);
@@ -183,6 +184,16 @@ export default function GCRechner() {
                   onChange={e => setManPos(p => ({ ...p, az_min: e.target.value }))}
                 />
               </div>
+              <div className="gc-field">
+                <label className="gc-label">Maschine €/Einheit</label>
+                <input
+                  className="gc-input"
+                  type="number"
+                  inputMode="decimal"
+                  value={manPos.maschinenkosten}
+                  onChange={e => setManPos(p => ({ ...p, maschinenkosten: e.target.value }))}
+                />
+              </div>
             </div>
           </div>
         )}
@@ -224,6 +235,12 @@ export default function GCRechner() {
                   <span>Material</span>
                   <span>{eur(ergebnis.material)}</span>
                 </div>
+                {ergebnis.maschine > 0 && (
+                  <div className="gc-ergebnis-row">
+                    <span>Maschine</span>
+                    <span>{eur(ergebnis.maschine)}</span>
+                  </div>
+                )}
                 <div className="gc-ergebnis-row">
                   <span>Lohn ({mengeNum} × {currentPos.az_min} Min × {eur(lohn)}/h)</span>
                   <span>{eur(ergebnis.lohn)}</span>
