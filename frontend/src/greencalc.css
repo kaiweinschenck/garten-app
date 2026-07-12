@@ -711,3 +711,34 @@
   outline: none;
 }
 .gc-settings-input:focus { border-color: var(--gc-green); }
+
+/* ── 3D Haus-Viewer ───────────────────────────────────── */
+.gc-3d-header {
+  padding: 16px 16px 8px;
+}
+
+.gc-3d-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--gc-green-dark);
+}
+
+.gc-3d-hint {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--gc-text-muted);
+}
+
+.gc-3d-canvas-wrap {
+  height: calc(100dvh - var(--gc-nav-h) - var(--gc-safe-b) - 130px);
+  min-height: 320px;
+  margin: 8px 16px 16px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid var(--gc-border);
+  touch-action: none;
+}
+
+.gc-3d-canvas-wrap canvas {
+  display: block;
+}

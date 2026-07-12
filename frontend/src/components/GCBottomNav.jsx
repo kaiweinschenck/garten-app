@@ -37,6 +37,13 @@ const TABS = [
       <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
     ),
   },
+  {
+    to: '/calc/haus',
+    label: '3D Haus',
+    icon: (
+      <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><polyline points="3 7 12 12 21 7"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
+    ),
+  },
 ];
 
 export default function GCBottomNav() {
