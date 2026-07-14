@@ -10,7 +10,20 @@ function GartenhausModel() {
   const object = useLoader(Rhino3dmLoader, MODEL_URL, loader => {
     loader.setLibraryPath(RHINO3DM_LIBRARY_PATH);
   });
-  return <primitive object={object} />;
+
+  let hasMesh = false;
+  object.traverse(o => {
+    if (o.isMesh) hasMesh = true;
+  });
+  if (!hasMesh) {
+    throw new Error(
+      'Die .3dm-Datei enthält keine Render-Meshes (nur Kurven/Anmerkungen). ' +
+      'In Rhino als glTF (.glb) exportieren oder Render-Meshes vor dem Speichern erzeugen.'
+    );
+  }
+
+  // Rhino ist Z-up, three.js ist Y-up.
+  return <primitive object={object} rotation={[-Math.PI / 2, 0, 0]} />;
 }
 
 function PlatzhalterHaus() {
