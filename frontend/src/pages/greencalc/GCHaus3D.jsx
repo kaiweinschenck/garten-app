@@ -1,12 +1,16 @@
 import { Suspense, useState, Component } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Center, Grid } from '@react-three/drei';
+import { Canvas, useLoader } from '@react-three/fiber';
+import { OrbitControls, Bounds, Grid } from '@react-three/drei';
+import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader.js';
 
-const MODEL_URL = '/models/gartenhaus.glb';
+const MODEL_URL = '/models/gartenhaus.3dm';
+const RHINO3DM_LIBRARY_PATH = '/rhino3dm/';
 
 function GartenhausModel() {
-  const { scene } = useGLTF(MODEL_URL);
-  return <primitive object={scene} />;
+  const object = useLoader(Rhino3dmLoader, MODEL_URL, loader => {
+    loader.setLibraryPath(RHINO3DM_LIBRARY_PATH);
+  });
+  return <primitive object={object} />;
 }
 
 function PlatzhalterHaus() {
@@ -68,27 +72,22 @@ export default function GCHaus3D() {
             castShadow
             shadow-mapSize={[1024, 1024]}
           />
-          <Center>
+          <Bounds fit clip observe margin={1.3}>
             <Suspense fallback={null}>
               <ModelBoundary onFailed={() => setPlatzhalter(true)}>
                 <GartenhausModel />
               </ModelBoundary>
             </Suspense>
-          </Center>
+          </Bounds>
           <Grid
             position={[0, -0.01, 0]}
             args={[20, 20]}
             cellColor="#c9d6bd"
             sectionColor="#a9bd94"
             fadeDistance={20}
+            infiniteGrid
           />
-          <OrbitControls
-            makeDefault
-            enablePan={false}
-            minDistance={3}
-            maxDistance={15}
-            maxPolarAngle={Math.PI / 2.1}
-          />
+          <OrbitControls makeDefault enablePan maxPolarAngle={Math.PI / 2.1} />
         </Canvas>
       </div>
     </div>
