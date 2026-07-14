@@ -324,4 +324,40 @@ Alle Tabellen haben folgende Spalten:
 
 ---
 
+## GEWERK: GARTENHAUS (HOLZBAU)
+
+### Ständerwerk & Beplankung
+
+| ID | Bezeichnung | Einheit | Material €/Einh | AZ min/Einh | Maschine €/Einh | Tags |
+|----|-------------|---------|-----------------|-------------|-----------------|------|
+| GH001 | Eckständer KVH 100/100 mm | lfm | 8,50 | 15 | 0,00 | eckständer, kvh, holzständer, rahmen |
+| GH002 | Wandständer KVH 60/120 mm | lfm | 5,20 | 12 | 0,00 | wandständer, kvh, holzständer, rahmen |
+| GH003 | Schwelle/Fußschwelle KVH 60/120 mm, imprägniert | lfm | 6,80 | 14 | 0,00 | schwelle, fußschwelle, kvh, imprägniert |
+| GH004 | Rähm/Kopfschwelle KVH 60/120 mm | lfm | 5,20 | 12 | 0,00 | rähm, kopfschwelle, kvh |
+| GH005 | Dachbalken KVH 60/200 mm | lfm | 9,50 | 16 | 0,00 | dachbalken, sparren, kvh |
+| GH006 | OSB-Beplankung 22 mm verlegen | m² | 14,00 | 12 | 0,00 | osb, beplankung, wand |
+| GH007 | Fenster-/Türlaibung verkleiden | lfm | 6,00 | 18 | 0,00 | laibung, fenster, tür |
+
+### Öffnungen
+
+| ID | Bezeichnung | Einheit | Material €/Einh | AZ min/Einh | Maschine €/Einh | Tags |
+|----|-------------|---------|-----------------|-------------|-----------------|------|
+| GH010 | Fenster Kunststoff 100×100 cm einbauen | Stk | 320,00 | 90 | 0,00 | fenster, einbau, öffnung |
+| GH011 | Tür Holz einflügelig einbauen | Stk | 650,00 | 120 | 0,00 | tür, einbau, öffnung |
+
+### Flachdach-Gründach
+
+| ID | Bezeichnung | Einheit | Material €/Einh | AZ min/Einh | Maschine €/Einh | Tags |
+|----|-------------|---------|-----------------|-------------|-----------------|------|
+| GH020 | Dachschalung OSB 22 mm | m² | 15,00 | 10 | 0,00 | dachschalung, osb, flachdach |
+| GH021 | Gefälledämmung EPS im Mittel 60–160 mm | m² | 28,00 | 8 | 0,00 | dämmung, gefälledämmung, eps, flachdach |
+| GH022 | Abdichtung/Wurzelschutzbahn verlegen | m² | 18,00 | 10 | 0,00 | abdichtung, wurzelschutz, bahn, flachdach |
+| GH023 | Dränageplatte 25 mm verlegen | m² | 9,00 | 6 | 0,00 | dränage, drainage, flachdach |
+| GH024 | Filtervlies verlegen | m² | 2,20 | 4 | 0,00 | filtervlies, vlies, gründach |
+| GH025 | Extensivsubstrat 10 cm einbauen | m² | 14,00 | 8 | 1,50 | substrat, extensiv, gründach |
+| GH026 | Sedum-Vegetationsmatte verlegen | m² | 16,00 | 6 | 0,00 | sedum, vegetation, gründach, dachbegrünung |
+| GH027 | Attika/Blechabdeckung montieren | lfm | 24,00 | 20 | 0,00 | attika, blechabdeckung, flachdach |
+
+---
+
 *Ende PREISE.md – Weinschenck GreenCalc 26*

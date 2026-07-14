@@ -5,7 +5,7 @@
  * Neue Positionen NICHT hier eintragen – nur in PREISE.md pflegen.
  * Regenerieren mit: node scripts/update-prices.js (im Projekt-Root)
  *
- * Stand: 30.6.2026 · 15 Kategorien · 199 Positionen
+ * Stand: 14.7.2026 · 18 Kategorien · 216 Positionen
  */
 
 export const LOHNKOSTENSATZ_DEFAULT = 75.00; // €/h (Vollkostenansatz inkl. Nebenkosten)
@@ -374,6 +374,56 @@ export const KATEGORIEN = [
       { id: 'BW010', bezeichnung: 'Anschluss an Wasserzähler', einheit: 'Stk', materialpreis: 45.00, az_min: 40, maschinenkosten: 0.00 },
       { id: 'BW011', bezeichnung: 'Bewässerung winterfest machen', einheit: 'Psch', materialpreis: 0.00, az_min: 45, maschinenkosten: 0.00 },
       { id: 'BW012', bezeichnung: 'Bewässerung Inbetriebnahme', einheit: 'Psch', materialpreis: 0.00, az_min: 30, maschinenkosten: 0.00 },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════
+  // GEWERK: Gartenhaus (holzbau) – Ständerwerk & Beplankung
+  // ═════════════════════════════════════════════════════════
+  {
+    id: 'staenderwerk_beplankung',
+    name: 'Ständerwerk & Beplankung',
+    gewerk: 'Gartenhaus (holzbau)',
+    positionen: [
+      { id: 'GH001', bezeichnung: 'Eckständer KVH 100/100 mm', einheit: 'lfm', materialpreis: 8.50, az_min: 15, maschinenkosten: 0.00 },
+      { id: 'GH002', bezeichnung: 'Wandständer KVH 60/120 mm', einheit: 'lfm', materialpreis: 5.20, az_min: 12, maschinenkosten: 0.00 },
+      { id: 'GH003', bezeichnung: 'Schwelle/Fußschwelle KVH 60/120 mm, imprägniert', einheit: 'lfm', materialpreis: 6.80, az_min: 14, maschinenkosten: 0.00 },
+      { id: 'GH004', bezeichnung: 'Rähm/Kopfschwelle KVH 60/120 mm', einheit: 'lfm', materialpreis: 5.20, az_min: 12, maschinenkosten: 0.00 },
+      { id: 'GH005', bezeichnung: 'Dachbalken KVH 60/200 mm', einheit: 'lfm', materialpreis: 9.50, az_min: 16, maschinenkosten: 0.00 },
+      { id: 'GH006', bezeichnung: 'OSB-Beplankung 22 mm verlegen', einheit: 'm²', materialpreis: 14.00, az_min: 12, maschinenkosten: 0.00 },
+      { id: 'GH007', bezeichnung: 'Fenster-/Türlaibung verkleiden', einheit: 'lfm', materialpreis: 6.00, az_min: 18, maschinenkosten: 0.00 },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════
+  // GEWERK: Gartenhaus (holzbau) – Öffnungen
+  // ═════════════════════════════════════════════════════════
+  {
+    id: 'oeffnungen',
+    name: 'Öffnungen',
+    gewerk: 'Gartenhaus (holzbau)',
+    positionen: [
+      { id: 'GH010', bezeichnung: 'Fenster Kunststoff 100×100 cm einbauen', einheit: 'Stk', materialpreis: 320.00, az_min: 90, maschinenkosten: 0.00 },
+      { id: 'GH011', bezeichnung: 'Tür Holz einflügelig einbauen', einheit: 'Stk', materialpreis: 650.00, az_min: 120, maschinenkosten: 0.00 },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════
+  // GEWERK: Gartenhaus (holzbau) – Flachdach-Gründach
+  // ═════════════════════════════════════════════════════════
+  {
+    id: 'flachdach_gruendach',
+    name: 'Flachdach-Gründach',
+    gewerk: 'Gartenhaus (holzbau)',
+    positionen: [
+      { id: 'GH020', bezeichnung: 'Dachschalung OSB 22 mm', einheit: 'm²', materialpreis: 15.00, az_min: 10, maschinenkosten: 0.00 },
+      { id: 'GH021', bezeichnung: 'Gefälledämmung EPS im Mittel 60–160 mm', einheit: 'm²', materialpreis: 28.00, az_min: 8, maschinenkosten: 0.00 },
+      { id: 'GH022', bezeichnung: 'Abdichtung/Wurzelschutzbahn verlegen', einheit: 'm²', materialpreis: 18.00, az_min: 10, maschinenkosten: 0.00 },
+      { id: 'GH023', bezeichnung: 'Dränageplatte 25 mm verlegen', einheit: 'm²', materialpreis: 9.00, az_min: 6, maschinenkosten: 0.00 },
+      { id: 'GH024', bezeichnung: 'Filtervlies verlegen', einheit: 'm²', materialpreis: 2.20, az_min: 4, maschinenkosten: 0.00 },
+      { id: 'GH025', bezeichnung: 'Extensivsubstrat 10 cm einbauen', einheit: 'm²', materialpreis: 14.00, az_min: 8, maschinenkosten: 1.50 },
+      { id: 'GH026', bezeichnung: 'Sedum-Vegetationsmatte verlegen', einheit: 'm²', materialpreis: 16.00, az_min: 6, maschinenkosten: 0.00 },
+      { id: 'GH027', bezeichnung: 'Attika/Blechabdeckung montieren', einheit: 'lfm', materialpreis: 24.00, az_min: 20, maschinenkosten: 0.00 },
     ],
   },
 

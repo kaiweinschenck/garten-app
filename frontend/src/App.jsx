@@ -11,6 +11,7 @@ import GCAngebot from './pages/greencalc/GCAngebot';
 import GCFotos from './pages/greencalc/GCFotos';
 import GCProjekte from './pages/greencalc/GCProjekte';
 import GCHaus3D from './pages/greencalc/GCHaus3D';
+import GCGartenhausPlaner from './pages/greencalc/GCGartenhausPlaner';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('admin_token');
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="fotos" element={<GCFotos />} />
         <Route path="projekte" element={<GCProjekte />} />
         <Route path="haus" element={<GCHaus3D />} />
+        <Route path="planer" element={<GCGartenhausPlaner />} />
       </Route>
     </Routes>
   );
